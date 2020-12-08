@@ -1,18 +1,20 @@
 import React from "react";
 import logo from "./logo.png";
 import { useHistory } from "react-router-dom";
-import { GoogleMap, LoadScript } from "@react-google-maps/api"
-​
-const Details = () => {
-  const [load, setLoading] = React.useState(true);
-  const [center, setCenter] = React.useState({lat:0,lng:0});
-  const history = useHistory();
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
-  const mapStyles = {        
-    height: "100vh",
-    width: "100%"};
-}
- 
+const Details = () => {
+  const mapStyles = {
+    height: "400px",
+    width: "500px",
+  };
+
+  const [center, setCenter] = React.useState({
+    lat: 0,
+    lng: 0,
+  });
+  const [load, setLoading] = React.useState(true);
+  const history = useHistory();
   React.useEffect(() => {
     fetch(
       "https://geolocation-db.com/json/1a811210-241d-11eb-b7a9-293dae7a95e1"
@@ -57,11 +59,11 @@ const Details = () => {
       })
       .then(function (data) {
         setDetails(data);
-        setCenter(prevState => ({
+        setCenter((prevState) => ({
           ...prevState,
-          lat:data.latitude,
-          lng:data.longitude
-      }));
+          lat: data.latitude,
+          lng: data.longitude,
+        }));
         return fetch(
           `http://check.getipintel.net/check.php?ip=${data.IPv4}&contact=anudip7@gmail.com`
         );
@@ -80,7 +82,7 @@ const Details = () => {
       .catch(function (error) {
         console.warn(error);
       });
-      
+
     console.log(details);
     setBool(!bool);
   };
@@ -102,7 +104,7 @@ const Details = () => {
           Flag My IP
         </p>
       </nav>
-      <header className="App-headerx" style={{ height: "100vh" }}>
+      <header className="App-headerx" style={{}}>
         {bool && (
           <div style={{ display: bool ? "block" : "none" }}>
             <table class="table table-dark table-borderless">
@@ -162,22 +164,17 @@ const Details = () => {
                 </tr>
               </tbody>
             </table>
-            <GoogleMapReact
-              bootstrapURLKeys={{
-                key: "AIzaSyB4YpdxXTygqk5C3gBWUwjEumWBmkjTX0Y",
-              }}
-              defaultCenter={this.props.center}
-              defaultZoom={this.props.zoom}
-              yesIWantToUseGoogleMapApiInternals
-              onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
-            >
-              <AnyReactComponent
-                lat={59.955413}
-                lng={30.337844}
-                text="My Marker"
-              />
-            </GoogleMapReact>
-
+            <div style={{ marginBottom: "50px" }}>
+              <LoadScript googleMapsApiKey="AIzaSyB4YpdxXTygqk5C3gBWUwjEumWBmkjTX0Y">
+                <GoogleMap
+                  mapContainerStyle={mapStyles}
+                  zoom={13}
+                  center={center}
+                >
+                  <Marker position={center} />
+                </GoogleMap>
+              </LoadScript>
+            </div>
             {/*<p style={{ textAlign: "left" }}>
               Your IP is : {details.IPv4}
               <br />
@@ -219,6 +216,13 @@ const Details = () => {
           )}
         </div>
       </header>
+      <footer class="footer ">
+        <div class="container">
+          <span class="text-muted" style={{ fontSize: "18px" }}>
+            A project by Vadhiraja and Shreesha
+          </span>
+        </div>
+      </footer>
     </div>
   );
 };

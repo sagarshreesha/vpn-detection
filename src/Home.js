@@ -56,7 +56,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <footer class="footer">
+          <footer class="footer fixed-bottom">
             <div class="container">
               <span class="text-muted" style={{ fontSize: "18px" }}>
                 A project by Vadhiraja and Shreesha
