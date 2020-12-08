@@ -216,13 +216,15 @@ const Details = () => {
           )}
         </div>
       </header>
-      <footer class="footer ">
-        <div class="container">
-          <span class="text-muted" style={{ fontSize: "18px" }}>
-            A project by Vadhiraja and Shreesha
-          </span>
-        </div>
-      </footer>
+      {bool && (
+        <footer class="footer ">
+          <div class="container" style={{ textAlign: "center" }}>
+            <span class="text-muted" style={{ fontSize: "18px" }}>
+              A project by Vadhiraja and Shreesha
+            </span>
+          </div>
+        </footer>
+      )}
     </div>
   );
 };
