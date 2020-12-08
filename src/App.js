@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./Home";
+import Details from "./Details";
 
 function App() {
+  React.useEffect(() => {
+    fetch(
+      "https://geolocation-db.com/json/1a811210-241d-11eb-b7a9-293dae7a95e1"
+    )
+      .then((res) => res.json())
+      .then((data) => setDetails(data));
+
+    console.log(details);
+  }, []);
+  const [details, setDetails] = React.useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/flag" render={() => <Details details={details} />} />
+    </Router>
   );
 }
 

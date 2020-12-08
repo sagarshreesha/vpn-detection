@@ -1,3 +1,6 @@
+body {
+  font-family: "Cabin", sans-serif;
+}
 .App {
   text-align: center;
 }
@@ -15,7 +18,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  height: calc(100vh - 72.4px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,4 +38,82 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.details {
+  transition: box-shadow 0.3s;
+  border: 3px solid #61dafb;
+  background-color: #0d0e11;
+  color: aliceblue;
+  width: 200px;
+  height: 60px;
+  border-radius: 990px;
+  padding: 10px 30px 10px 30px;
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.details:hover {
+  color: aliceblue;
+  box-shadow: blanchedalmond;
+  box-shadow: 0 0 16px rgba(84, 197, 231, 0.8);
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px; /* Set the fixed height of the footer here */
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #15171b;
+}
+
+button {
+  outline: none !important;
+}
+
+.App-headerx {
+  background-color: #282c34;
+  height: calc(100vh - 72.4px);
+  font-size: 20px !important;
+  color: white;
+  padding: 40px 40px 40px 40px;
+}
+
+.yn {
+  transition: box-shadow 0.3s;
+  border: 3px solid #0d9101;
+  background-color: #023b00;
+  color: rgb(208, 255, 223);
+  width: 100px;
+  height: 40px;
+  border-radius: 990px;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.yn:hover {
+  box-shadow: 0 0 16px #4ff540;
+}
+.ynx {
+  transition: box-shadow 0.3s;
+  border: 3px solid #c90000;
+  background-color: #610000;
+  color: rgb(252, 198, 198);
+  width: 100px;
+  height: 40px;
+  border-radius: 990px;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.ynx:hover {
+  box-shadow: 0 0 16px#ff2d2d;
+}
+table th {
+  width: 250px !important;
+}
+
+table tr {
+  height: 60px !important;
 }
